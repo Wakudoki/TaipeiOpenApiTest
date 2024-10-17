@@ -10,7 +10,8 @@ object DarkColor: ColorScheme {
         )
     override val background: ColorScheme.Background
         get() = ColorScheme.Background(
-            original = Color(0xff22292E)
+            original = Color(0xff22292E),
+            secondary = Color(0xff3C3F40)
         )
     override val line: ColorScheme.Line
         get() = ColorScheme.Line(

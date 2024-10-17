@@ -10,7 +10,8 @@ object LightColor: ColorScheme {
         )
     override val background: ColorScheme.Background
         get() = ColorScheme.Background(
-            original = Color(0xffF4F4F4)
+            original = Color(0xffF4F4F4),
+            secondary = Color(0xffEEEEEE)
         )
     override val line: ColorScheme.Line
         get() = ColorScheme.Line(

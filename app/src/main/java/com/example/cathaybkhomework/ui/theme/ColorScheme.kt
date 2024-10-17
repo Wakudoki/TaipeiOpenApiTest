@@ -17,7 +17,8 @@ interface ColorScheme {
     )
 
     data class Background(
-        val original: Color
+        val original: Color,
+        val secondary: Color
     )
 
     data class Line(

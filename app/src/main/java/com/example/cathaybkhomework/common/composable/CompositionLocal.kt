@@ -5,11 +5,15 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import com.example.cathaybkhomework.data.MyLanguage
 import com.example.cathaybkhomework.ui.theme.ThemeMode
 import com.example.myandroid.common.language.MyModel
 import com.example.myandroid.ui.theme.ColorScheme
 import com.example.myandroid.ui.theme.DarkColor
 import com.example.myandroid.ui.theme.LightColor
+
+val LocalLanguageOf @Composable get() = staticCompositionLocalOf { MyLanguage[MyModel.languageKey] }
+val LocalLanguage @Composable get() = LocalLanguageOf.current
 
 val LocalThemeModeOf @Composable get() = staticCompositionLocalOf { ThemeMode[MyModel.themeMode] }
 val LocalThemeMode @Composable get() = LocalThemeModeOf.current
@@ -25,6 +29,7 @@ val LocalColorTextTitle @Composable get() = localColor("text.title") { text.titl
 val LocalColorTextSubtitle @Composable get() = localColor("text.subtitle") { text.subtitle }
 
 val LocalColorBackgroundOriginal @Composable get() = localColor("background.original") { background.original }
+val LocalColorBackgroundSecondary @Composable get() = localColor("background.secondary") { background.secondary }
 
 val LocalColorLine1 @Composable get() = localColor("line.line1") { line.line1 }
 val LocalColorLine2 @Composable get() = localColor("line.line2") { line.line2 }

@@ -6,21 +6,23 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -40,10 +42,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.PopupProperties
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -51,6 +56,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOriginal
+import com.example.cathaybkhomework.common.composable.LocalColorBackgroundSecondary
+import com.example.cathaybkhomework.common.composable.LocalColorBlueSecondary
 import com.example.cathaybkhomework.common.composable.LocalColorIconNormal
 import com.example.cathaybkhomework.common.composable.LocalColorLine2
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
@@ -61,20 +68,24 @@ import com.example.cathaybkhomework.page.home.BottomNavigationItem
 import com.example.cathaybkhomework.page.home.HomeScreen
 import com.example.cathaybkhomework.page.home.MyScreens
 import com.example.cathaybkhomework.ui.theme.ThemeMode
+import com.example.myandroid.common.language.MyModel
 import com.example.myandroid.extension.clickableNoRipple
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by inject()
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val themeMode = viewModel.themeMode.collectAsState()
+
             val navController = rememberNavController()
             var languageExpandState by remember { mutableStateOf(false) }
-            val isDarkMode = LocalIsDarkTheme
 
+            //判斷是否為暗黑模式，並修改status&navigationBar的顏色
+            val isDarkMode = LocalIsDarkTheme
             val systemBarStyle = if (isDarkMode) {
                 SystemBarStyle.dark(Color.TRANSPARENT)
             } else {
@@ -132,13 +143,17 @@ class MainActivity : ComponentActivity() {
                                     tint = LocalColorIconNormal
                                 )
 
-                                LanguageMenu(
-                                    expandState = languageExpandState,
-                                    onSelect = { language ->
-                                        languageExpandState = false
-                                        viewModel.setLanguage(language.key)
-                                    }
-                                ) { languageExpandState = false }
+
+                                if (languageExpandState) {
+                                    LanguageDialog(
+                                        onSelect = { language ->
+                                            languageExpandState = false
+                                            if (language.key != MyModel.languageKey) {   //與目前不同才做更新
+                                                viewModel.setLanguage(language.key)
+                                            }
+                                        },
+                                    ) { languageExpandState = false }
+                                }
                             }
                         )
                     },
@@ -149,7 +164,7 @@ class MainActivity : ComponentActivity() {
                         ) {
                             val navBackStackEntry by navController.currentBackStackEntryAsState()
                             val currentRoute = navBackStackEntry?.destination
-                            var selectedItemIndex by rememberSaveable {
+                            val selectedItemIndex by rememberSaveable {
                                 mutableIntStateOf(0)
                             }
                             val items = listOf(
@@ -224,33 +239,57 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-private fun LanguageMenu(
-    expandState: Boolean,
+private fun LanguageDialog(
     onSelect: (language: MyLanguage) -> Unit,
     onDismissRequest: () -> Unit
 ) {
-    DropdownMenu(
-        expanded = expandState,
-        onDismissRequest = {
-            onDismissRequest()
-        },
-        modifier = Modifier.background(LocalColorBackgroundOriginal),
-        offset = DpOffset(16.dp, 2.dp),
-        properties = PopupProperties(focusable = true)
+    Dialog(
+        onDismissRequest = onDismissRequest
     ) {
-        MyLanguage.entries.forEach {
-            DropdownMenuItem(
-                text = {
-                    Text(
-                        text = it.getString(),
-                        color = LocalColorTextTitle
-                    )
-                },
-                onClick = {
-                    onSelect(it)
-                },
-                enabled = true
-            )
+        LazyColumn(
+            modifier = Modifier
+                .background(LocalColorBackgroundSecondary)
+                .padding(16.dp)
+                .clip(shape = RoundedCornerShape(8.dp)),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            item {
+                Text(
+                    text = "選擇語言",
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 24.sp
+                    ),
+                    color = LocalColorTextTitle
+                )
+            }
+
+            items(
+                items = MyLanguage.entries
+            ) {
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = if (it == MyLanguage.current) {
+                                LocalColorBlueSecondary.copy(alpha = 0.4f)
+                            } else {
+                                androidx.compose.ui.graphics.Color.Transparent
+                            }
+                        )
+                        .padding(horizontal = 16.dp, vertical = 4.dp)
+                        .clickableNoRipple {
+                            onSelect(it)
+                        }
+                        .clip(shape = RoundedCornerShape(8.dp)),
+                    text = it.getString(),
+                    color = if (it == MyLanguage.current) {
+                        androidx.compose.ui.graphics.Color.White
+                    } else {
+                        LocalColorTextTitle
+                    },
+                )
+            }
         }
     }
 }

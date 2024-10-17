@@ -4,27 +4,47 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cathaybkhomework.data.Attraction
+import com.example.cathaybkhomework.data.Event
 import com.example.cathaybkhomework.repositories.AttractionsRepository
+import com.example.myandroid.common.language.MyModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeViewModel(
     private val attractionsRepository: AttractionsRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val _attractions = MutableStateFlow<Attraction?>(null)
     val attractions = _attractions.asStateFlow()
 
+    private val _events = MutableStateFlow<Event?>(null)
+    val events = _events.asStateFlow()
+
+
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            kotlin.runCatching {
-                attractionsRepository.getAttractions()
-            }.onSuccess {
-                _attractions.value = it
-            }.onFailure {
-                Log.e("HomeViewModel", it.message.toString())
+            fetchEvent()
+        }
+    }
+
+    suspend fun fetchEvent() {
+        kotlin.runCatching {
+            attractionsRepository.getEvents()
+        }.onSuccess {
+            _events.value = it
+        }.onFailure {
+            Log.e("HomeViewModel", it.message.toString())
+        }
+    }
+
+    fun setLanguage(languageKey: String) {
+        viewModelScope.launch {
+            MyModel.languageKey = languageKey
+            withContext(Dispatchers.IO) {
+                fetchEvent()
             }
         }
     }

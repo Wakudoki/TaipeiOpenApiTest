@@ -70,6 +70,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
 
+    //data store
+    implementation(libs.androidx.datastore.preferences)
+
     // debug
     debugImplementation(libs.okhttp3.logging.interceptor)
 }

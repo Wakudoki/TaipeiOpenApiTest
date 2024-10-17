@@ -11,4 +11,14 @@ data class AttractionItem(
     val introduction: String,
     val openStatus: Int,
     val url: String,
+    val tel: String,
+    val remind: String,
+    val modified: String,
+    val images: List<ImageItem>,
+)
+
+data class ImageItem(
+    val src: String,
+    val subject: String,
+    val ext: String
 )

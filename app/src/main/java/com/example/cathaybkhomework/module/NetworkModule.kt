@@ -1,4 +1,4 @@
-package com.example.cathaybkhomework.common.module
+package com.example.cathaybkhomework.module
 
 import com.example.cathaybkhomework.common.MyConst
 import com.example.cathaybkhomework.retrofit.ApiService

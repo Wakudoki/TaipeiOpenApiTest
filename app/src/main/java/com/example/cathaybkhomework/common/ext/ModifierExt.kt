@@ -23,7 +23,7 @@ fun Modifier.clickableRipple(
         interactionSource = interactionSource ?: remember {
             MutableInteractionSource()
         },
-        indication = indication //?: rememberRipple(
+        indication = indication //?: ripple(
 //            color = LocalColorTextNormal.copy(alpha = 0.3f),
         //),
                 ,

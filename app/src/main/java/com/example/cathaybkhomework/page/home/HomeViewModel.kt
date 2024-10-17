@@ -6,12 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.cathaybkhomework.data.Attraction
 import com.example.cathaybkhomework.data.Event
 import com.example.cathaybkhomework.repositories.AttractionsRepository
-import com.example.myandroid.common.language.MyModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class HomeViewModel(
     private val attractionsRepository: AttractionsRepository
@@ -40,12 +38,5 @@ class HomeViewModel(
         }
     }
 
-    fun setLanguage(languageKey: String) {
-        viewModelScope.launch {
-            MyModel.languageKey = languageKey
-            withContext(Dispatchers.IO) {
-                fetchEvent()
-            }
-        }
-    }
+
 }

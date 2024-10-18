@@ -1,15 +1,14 @@
 package com.example.cathaybkhomework.data
 
-data class Event (
+data class Tours(
     val total: Int,
-    val data: List<EventItem>
+    val data: List<TourItem>
 )
 
-data class EventItem(
+data class TourItem(
     val id: Int,
-    val title: String,
+    val title: Int,
     val description: String,
     val url: String,
-    val posted: String,
     val modified: String,
 )

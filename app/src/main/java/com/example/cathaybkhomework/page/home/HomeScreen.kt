@@ -13,11 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOriginal
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = koinViewModel(),
+    viewModel: HomeViewModel,
 ) {
     val data = viewModel.events.collectAsState()
     Box(
@@ -32,7 +31,7 @@ fun HomeScreen(
                 items = data.value?.data ?: emptyList(),
                 key = { _, item -> item.id },
                 contentType = { _, _ -> "EventItem" }
-            ) { index, item ->
+            ) { _, item ->
                 Text(
                     text = item.title,
                     color = LocalColorTextTitle

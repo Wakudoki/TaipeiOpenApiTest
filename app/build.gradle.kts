@@ -40,7 +40,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -59,6 +58,11 @@ dependencies {
 
     implementation(libs.material)
     implementation(libs.navigation.fragment.ktx)
+
+    // Fragment
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.fragment.compose)
+    debugImplementation(libs.androidx.fragment.testing)
 
     // koin
     implementation(libs.io.koin.core)

@@ -1,4 +1,4 @@
-package com.example.cathaybkhomework.data
+package com.example.cathaybkhomework.common.language
 
 import com.example.myandroid.common.language.MyModel
 
@@ -21,9 +21,23 @@ enum class MyLanguage(
         val default by lazy { EN }
         val current get() = MyLanguage[MyModel.languageKey] ?: default
         operator fun get(key: String) = entries.find { it.key == key }
+
+        val strings: MultiLanguage
+            get() = when(current) {
+                TW -> TraditionalChinese
+                else -> English
+            }
+
     }
 
     fun getString(): String {
+        val tw = mapOf(
+            "latestNews" to "最新消息",
+            "showMore" to "顯示更多",
+            "home" to "首頁",
+            "attraction" to "遊憩景點",
+        )
         return lang
     }
 }
+

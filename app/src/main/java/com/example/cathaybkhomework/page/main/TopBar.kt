@@ -10,14 +10,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,7 +37,7 @@ import com.example.cathaybkhomework.common.composable.LocalColorBlueSecondary
 import com.example.cathaybkhomework.common.composable.LocalColorIconNormal
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
 import com.example.cathaybkhomework.common.composable.LocalIsDarkTheme
-import com.example.cathaybkhomework.data.MyLanguage
+import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.ui.theme.ThemeMode
 import com.example.myandroid.common.language.MyModel
 import com.example.myandroid.extension.clickableNoRipple
@@ -46,7 +45,8 @@ import com.example.myandroid.extension.clickableNoRipple
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    viewModel: MainViewModel
+    viewModel: MainViewModel,
+    title: MutableState<String>
 ) {
     var languageExpandState by remember { mutableStateOf(false) }
     val isDarkMode = LocalIsDarkTheme
@@ -55,7 +55,7 @@ fun TopBar(
             titleContentColor = LocalColorTextTitle,
             containerColor = LocalColorBackgroundOriginal
         ),
-        title = { Text(text = "TopAppBar") },
+        title = { Text(text = title.value) },
         actions = {
             Icon(
                 modifier = Modifier

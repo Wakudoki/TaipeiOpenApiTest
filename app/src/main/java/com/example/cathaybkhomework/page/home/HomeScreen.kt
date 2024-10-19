@@ -45,6 +45,7 @@ import com.example.cathaybkhomework.common.composable.LocalColorLine3
 import com.example.cathaybkhomework.common.composable.LocalColorTextSubtitle
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
 import com.example.cathaybkhomework.common.ext.toAnnotatedString
+import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.data.NewsItem
 import com.example.myandroid.extension.clickableNoRipple
 import kotlin.math.min
@@ -97,7 +98,7 @@ fun HomeScreen(
                     item {
                         Text(
                             modifier = Modifier.padding(horizontal = 16.dp),
-                            text = "最新消息",
+                            text = MyLanguage.strings.latestNews,
                             style = TextStyle(
                                 fontSize = 24.sp,
                                 color = LocalColorTextTitle
@@ -125,7 +126,7 @@ fun HomeScreen(
                                 horizontalArrangement = Arrangement.End
                             ) {
                                 Text(
-                                    text = "顯示更多",
+                                    text = MyLanguage.strings.showMore,
                                     style = TextStyle(
                                         fontSize = 10.sp,
                                         color = LocalColorBluePrimary,

@@ -5,7 +5,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
-import com.example.cathaybkhomework.data.MyLanguage
+import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.ui.theme.ThemeMode
 import com.example.myandroid.common.language.MyModel
 import com.example.myandroid.ui.theme.ColorScheme

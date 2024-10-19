@@ -6,8 +6,10 @@ import android.os.Bundle
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -26,11 +28,10 @@ import com.example.cathaybkhomework.common.composable.LocalIsDarkTheme
 import com.example.cathaybkhomework.common.composable.LocalThemeModeOf
 import com.example.cathaybkhomework.page.attraction.AttractionFragment
 import com.example.cathaybkhomework.page.home.HomeFragment
-import com.example.cathaybkhomework.page.home.MyScreens
+import com.example.cathaybkhomework.data.MyScreens
 import com.example.cathaybkhomework.page.main.BottomNavigationBar
 import com.example.cathaybkhomework.page.main.NavigationItem
 import com.example.cathaybkhomework.page.main.TopBar
-import com.example.cathaybkhomework.ui.theme.ThemeMode
 import org.koin.android.ext.android.inject
 
 class MainActivity : FragmentActivity() {
@@ -82,12 +83,20 @@ class MainActivity : FragmentActivity() {
             Scaffold(
                 topBar = { TopBar(viewModel) },
                 bottomBar = { BottomNavigationBar(navController) }
-            ) { Navigation(navController, supportFragmentManager, ::getCommitFunction) }
+            ) { innerPadding ->
+                Navigation(
+                    modifier = Modifier.fillMaxSize().padding(innerPadding),
+                    navController = navController,
+                    supportFragmentManager = supportFragmentManager,
+                    getCommitFunction = ::getCommitFunction
+                )
+            }
         }
     }
 
     @Composable
     fun Navigation(
+        modifier: Modifier = Modifier,
         navController: NavHostController,
         supportFragmentManager: FragmentManager,
         getCommitFunction: (
@@ -95,7 +104,6 @@ class MainActivity : FragmentActivity() {
             tag: String
         ) -> (FragmentTransaction.(containerId: Int) -> Unit)
     ) {
-
         NavHost(navController, startDestination = NavigationItem.Home.route) {
             enumValues<NavigationItem>().forEach { item ->
                 composable(item.route) {
@@ -106,7 +114,7 @@ class MainActivity : FragmentActivity() {
                     }
 
                     FragmentContainer(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = modifier,
                         fragmentManager = supportFragmentManager,
                         commit = getCommitFunction(
                             fragment,

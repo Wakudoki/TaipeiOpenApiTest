@@ -12,6 +12,7 @@ data class NewsItem(
     val url: String,
     val posted: String,
     val modified: String,
+    val links: List<Link>
 )
 
 data class Activity(

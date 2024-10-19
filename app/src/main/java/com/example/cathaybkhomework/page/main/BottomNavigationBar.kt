@@ -21,7 +21,7 @@ import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOrigin
 import com.example.cathaybkhomework.common.composable.LocalColorIconNormal
 import com.example.cathaybkhomework.common.composable.LocalColorLine2
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
-import com.example.cathaybkhomework.page.home.MyScreens
+import com.example.cathaybkhomework.data.MyScreens
 
 enum class NavigationItem(
     val route: String,

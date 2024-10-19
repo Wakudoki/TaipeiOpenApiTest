@@ -86,7 +86,7 @@ fun TopBar(
                 modifier = Modifier.clickableNoRipple {
                     languageExpandState = !languageExpandState
                 },
-                imageVector = Icons.Filled.Menu,
+                painter = painterResource(R.drawable.ic_language),
                 contentDescription = "DateRange",
                 tint = LocalColorIconNormal
             )

@@ -85,4 +85,7 @@ dependencies {
 
     //Glide
     implementation(libs.compose)
+
+    //Webview
+    implementation(libs.androidx.webkit)
 }

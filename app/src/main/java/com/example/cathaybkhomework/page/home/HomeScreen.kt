@@ -122,7 +122,7 @@ fun HomeScreen(
                             Text(
                                 text = MyLanguage.strings.showMore,
                                 style = TextStyle(
-                                    fontSize = 10.sp,
+                                    fontSize = 12.sp,
                                     color = LocalColorBluePrimary,
                                     textAlign = TextAlign.End
                                 )

@@ -1,0 +1,117 @@
+package com.example.cathaybkhomework.page.wabview
+
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.view.ViewGroup
+import android.webkit.WebView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebViewFeature
+import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOriginal
+import com.example.cathaybkhomework.common.composable.LocalColorBackgroundSecondary
+import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
+import com.example.cathaybkhomework.common.composable.LocalLanguageOf
+import com.example.cathaybkhomework.common.composable.LocalThemeModeOf
+import com.example.cathaybkhomework.common.language.MyLanguage
+import com.example.cathaybkhomework.ui.theme.ThemeMode
+import com.example.myandroid.common.language.MyModel
+
+class WebViewActivity: ComponentActivity() {
+
+    companion object {
+        fun newIntent(
+            context: Context,
+            title: String,
+            url: String
+        ): Intent {
+            return Intent(context, WebViewActivity::class.java).apply {
+                putExtra("title", title)
+                putExtra("url", url)
+            }
+        }
+    }
+
+    private val url by lazy {
+        intent.getStringExtra("url") ?: "https://www.travel.taipei/"
+    }
+
+    private val title by lazy {
+        intent.getStringExtra("title") ?: ""
+    }
+
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "SetJavaScriptEnabled")
+    @OptIn(ExperimentalMaterial3Api::class)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            CompositionLocalProvider(
+                LocalThemeModeOf provides ThemeMode[MyModel.themeMode],
+                LocalLanguageOf provides MyLanguage[MyModel.languageKey]
+            ) {
+                Scaffold (
+                    topBar = {
+                        TopAppBar(
+                            navigationIcon = {
+                                IconButton(
+                                    onClick = {
+                                        onBackPressed()
+                                    }
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.ArrowBack,
+                                        contentDescription = "Back"
+                                    )
+                                }
+                            },
+                            title = {
+                                Text(text = title)
+                            },
+                            colors = TopAppBarDefaults.topAppBarColors(
+                                titleContentColor = LocalColorTextTitle,
+                                containerColor = LocalColorBackgroundOriginal
+                            )
+                        )
+                    },
+                ) {
+                    AndroidView(
+                        modifier = Modifier.background(LocalColorBackgroundOriginal),
+                        factory = {
+                            WebView(it).apply {
+                                this.layoutParams = ViewGroup.LayoutParams(
+                                    ViewGroup.LayoutParams.MATCH_PARENT,
+                                    ViewGroup.LayoutParams.MATCH_PARENT
+                                )
+                                if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+                                    WebSettingsCompat.setForceDark(
+                                        this.settings,
+                                        WebSettingsCompat.FORCE_DARK_AUTO
+                                    )
+                                }
+                                settings.javaScriptEnabled = true
+                            }
+                        },
+                        update = {
+                            it.loadUrl(url)
+                        }
+                    )
+                }
+            }
+        }
+    }
+}

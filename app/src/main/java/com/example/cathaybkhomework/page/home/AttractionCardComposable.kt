@@ -38,7 +38,7 @@ import com.example.cathaybkhomework.common.composable.LocalColorBluePrimary
 import com.example.cathaybkhomework.common.composable.LocalColorLine3
 import com.example.cathaybkhomework.common.composable.LocalColorTextSubtitle
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
-import com.example.cathaybkhomework.common.composable.NoImage
+import com.example.cathaybkhomework.common.composable.TextGrid
 import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.data.AttractionItem
 import com.example.myandroid.extension.clickableNoRipple
@@ -61,7 +61,7 @@ fun AttractionCard(
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (imagePageCount == 0) {
-            NoImage(
+            TextGrid(   //無圖片顯示
                 modifier = Modifier
                     .width(100.dp)
                     .height(80.dp),

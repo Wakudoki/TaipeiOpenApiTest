@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun NoImage(
+fun TextGrid(
     modifier: Modifier,
     text: String,
     color: Color,
@@ -41,7 +41,7 @@ fun NoImage(
 @Preview
 @Composable
 fun NoImagePreview() {
-    NoImage(
+    TextGrid(
         modifier = Modifier
             .width(100.dp)
             .height(80.dp),

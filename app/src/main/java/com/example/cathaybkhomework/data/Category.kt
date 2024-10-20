@@ -1,5 +1,7 @@
 package com.example.cathaybkhomework.data
 
+import com.google.gson.annotations.SerializedName
+
 enum class CategoryType {
     Activity,// -展演活動
     Calendar,// -活動年曆
@@ -13,11 +15,14 @@ enum class CategoryType {
 
 data class Category(
     val total: Int,
-    val data: List<CategoryItem>
+    val data: CategoryItem
 )
 
 data class CategoryItem(
-    val Category: List<CategoryDetail>
+    @SerializedName("Category") val category: List<CategoryDetail>,
+    @SerializedName("Friendly") val friendly: List<CategoryDetail>,
+    @SerializedName("Services") val services: List<CategoryDetail>,
+    @SerializedName("Target") val target: List<CategoryDetail>
 )
 
 data class CategoryDetail(

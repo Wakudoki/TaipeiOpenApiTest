@@ -6,6 +6,7 @@ import com.example.cathaybkhomework.data.Attraction
 import com.example.cathaybkhomework.data.Audio
 import com.example.cathaybkhomework.data.Calendar
 import com.example.cathaybkhomework.data.Category
+import com.example.cathaybkhomework.data.CategoryDetail
 import com.example.cathaybkhomework.data.CategoryType
 import com.example.cathaybkhomework.data.News
 import com.example.cathaybkhomework.data.Panos
@@ -19,6 +20,18 @@ class TravelApiRepository(
 ) {
     suspend fun getAttractions(): Attraction {
         return apiService.getAttractions()
+    }
+
+    suspend fun getAttractions(categories: List<CategoryDetail>): Attraction {
+        val categoryIds = StringBuilder().apply {
+            if (categories.isNotEmpty()) {
+                append("?categoryIds=")
+                append(categories.joinToString(separator = "%2C"))
+            } else {
+                append("")
+            }
+        }
+        return apiService.getAttractions(MyConst.BASE_URL_GET + "${MyModel.languageKey}/Attractions/All$categoryIds")
     }
 
     suspend fun getEvents(): News {

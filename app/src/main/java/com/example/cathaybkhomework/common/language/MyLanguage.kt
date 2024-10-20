@@ -30,14 +30,6 @@ enum class MyLanguage(
 
     }
 
-    fun getString(): String {
-        val tw = mapOf(
-            "latestNews" to "最新消息",
-            "showMore" to "顯示更多",
-            "home" to "首頁",
-            "attraction" to "遊憩景點",
-        )
-        return lang
-    }
+    fun getString(): String = lang
 }
 

@@ -55,14 +55,17 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation (libs.androidx.material)
+    implementation (libs.androidx.lifecycle.viewmodel.compose)
 
-    implementation(libs.material)
-    implementation(libs.navigation.fragment.ktx)
 
     // Fragment
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.fragment.compose)
     debugImplementation(libs.androidx.fragment.testing)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.material)
+    implementation(libs.navigation.fragment.ktx)
 
     // koin
     implementation(libs.io.koin.core)
@@ -80,8 +83,6 @@ dependencies {
     // debug
     debugImplementation(libs.okhttp3.logging.interceptor)
 
-    implementation(libs.androidx.navigation.compose)
-
-    implementation (libs.androidx.material)
-    implementation (libs.androidx.lifecycle.viewmodel.compose)
+    //Glide
+    implementation(libs.compose)
 }

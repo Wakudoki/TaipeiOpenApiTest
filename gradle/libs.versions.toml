@@ -1,5 +1,6 @@
 [versions]
 agp = "8.7.1"
+compose = "1.0.0-beta01"
 fragmentKtx = "1.8.4"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
@@ -27,6 +28,7 @@ androidx-fragment-testing = { module = "androidx.fragment:fragment-testing", ver
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+compose = { module = "com.github.bumptech.glide:compose", version.ref = "compose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

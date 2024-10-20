@@ -5,6 +5,8 @@ interface MultiLanguage {
     val showMore: String
     val home: String
     val attraction: String
+    val viewDetail: String
+    val noImage: String
 }
 
 object TraditionalChinese : MultiLanguage {
@@ -12,6 +14,8 @@ object TraditionalChinese : MultiLanguage {
     override val showMore: String = "顯示更多"
     override val home: String = "首頁"
     override val attraction: String = "遊憩景點"
+    override val viewDetail: String = "查看詳情"
+    override val noImage: String = "無圖片顯示"
 }
 
 object English : MultiLanguage {
@@ -19,4 +23,6 @@ object English : MultiLanguage {
     override val showMore: String = "Show More"
     override val home: String = "Home"
     override val attraction: String = "Attraction"
+    override val viewDetail: String = "View Details"
+    override val noImage: String = "No Image"
 }

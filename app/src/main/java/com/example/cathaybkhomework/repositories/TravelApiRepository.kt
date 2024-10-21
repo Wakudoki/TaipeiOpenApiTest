@@ -23,14 +23,7 @@ class TravelApiRepository(
     }
 
     suspend fun getAttractions(categories: List<CategoryDetail>): Attraction {
-        val categoryIds = StringBuilder().apply {
-            if (categories.isNotEmpty()) {
-                append("?categoryIds=")
-                append(categories.joinToString(separator = "%2C"))
-            } else {
-                append("")
-            }
-        }
+        val categoryIds = getCategoryIds(categories)
         return apiService.getAttractions(MyConst.BASE_URL_GET + "${MyModel.languageKey}/Attractions/All$categoryIds")
     }
 
@@ -60,5 +53,16 @@ class TravelApiRepository(
 
     suspend fun getTours(): Tours {
         return apiService.getTours()
+    }
+
+    private fun getCategoryIds(categories: List<CategoryDetail>): String {
+        return StringBuilder().apply {
+            if (categories.isNotEmpty()) {
+                append("?categoryIds=")
+                append(categories.joinToString(separator = "%2C") { it.id })
+            } else {
+                append("")
+            }
+        }.toString()
     }
 }

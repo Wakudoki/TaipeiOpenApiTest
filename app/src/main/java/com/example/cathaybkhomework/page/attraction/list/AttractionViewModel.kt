@@ -44,6 +44,13 @@ class AttractionViewModel(
         }
     }
 
+    fun setSelectedCategories(categories: List<CategoryDetail>) {
+        _selectedCategories.value = categories
+        viewModelScope.launch {
+            fetchAttractions()
+        }
+    }
+
     private suspend fun fetchCategories() {
         kotlin.runCatching {
             loading()

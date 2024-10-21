@@ -17,6 +17,7 @@ interface MultiLanguage {
     val attractionIntroduction: String
     val category: String
     val serviceFacilities: String
+    val clearAll: String
 }
 
 object TraditionalChinese : MultiLanguage {
@@ -36,6 +37,7 @@ object TraditionalChinese : MultiLanguage {
     override val attractionIntroduction: String = "景點介紹"
     override val category: String = "類型"
     override val serviceFacilities: String = "服務設施"
+    override val clearAll: String = "清除全部"
 }
 
 object English : MultiLanguage {
@@ -55,4 +57,5 @@ object English : MultiLanguage {
     override val attractionIntroduction: String = "Attraction Introduction"
     override val category: String = "Category"
     override val serviceFacilities: String = "Service Facilities"
+    override val clearAll: String = "Clear All"
 }

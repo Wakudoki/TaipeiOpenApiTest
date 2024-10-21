@@ -39,13 +39,12 @@ import com.example.myandroid.extension.clickableNoRipple
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun AttractionCard(
+    modifier: Modifier = Modifier,
     attraction: AttractionItem,
     onClick: (attraction: AttractionItem) -> Unit
 ) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+        modifier = modifier
             .border(width = 1.dp, color = LocalColorLine3)
             .padding(8.dp)
             .clickableNoRipple { onClick.invoke(attraction) },

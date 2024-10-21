@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cathaybkhomework.R
 import com.example.cathaybkhomework.common.composable.EmptyScreen
-import com.example.cathaybkhomework.common.composable.LoadingGradient
+import com.example.cathaybkhomework.common.composable.LoadingGradientWithTitle
 import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOriginal
 import com.example.cathaybkhomework.common.composable.LocalColorBluePrimary
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
@@ -89,7 +89,7 @@ fun HomeScreen(
         ) {
             if (isNewsLoading.value) {
                 item {
-                    LoadingGradient()
+                    LoadingGradientWithTitle()
                 }
             } else if (news.isNotEmpty()) {
                 item {
@@ -158,7 +158,7 @@ fun HomeScreen(
 
             if (isAttractionLoading.value) {
                 item {
-                    LoadingGradient()
+                    LoadingGradientWithTitle()
                 }
             } else if (attractions.isNotEmpty()) {
                 item {
@@ -176,6 +176,9 @@ fun HomeScreen(
                     count = min(attractions.size, attractionsDisplayCount.intValue)
                 ) { index ->
                     AttractionCard(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
                         attraction = attractions[index],
                         onClick = {
                             context.startActivity(

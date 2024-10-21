@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
@@ -31,12 +30,13 @@ import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
 import com.example.cathaybkhomework.common.ext.toAnnotatedString
 import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.data.NewsItem
-import com.example.cathaybkhomework.page.wabview.WebViewActivity
 import com.example.myandroid.extension.clickableNoRipple
 
 @Composable
-fun NewsCard(news: NewsItem) {
-    val context = LocalContext.current
+fun NewsCard(
+    news: NewsItem,
+    onClick: (news: NewsItem) -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -44,15 +44,7 @@ fun NewsCard(news: NewsItem) {
             .clip(RoundedCornerShape(4.dp))
             .border(width = 1.dp, color = LocalColorLine3)
             .padding(8.dp)
-            .clickableNoRipple {
-                context.startActivity(
-                    WebViewActivity.newIntent(
-                        context = context,
-                        url = news.url,
-                        title = MyLanguage.strings.latestNews
-                    )
-                )
-            }
+            .clickableNoRipple { onClick.invoke(news) }
     ) {
         Text(
             text = news.title,

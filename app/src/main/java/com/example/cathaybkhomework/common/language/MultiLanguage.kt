@@ -10,6 +10,13 @@ interface MultiLanguage {
     val all: String
     val selectLanguage: String
     val selectCategories: String
+    val businessHours: String
+    val address: String
+    val tel: String
+    val url: String
+    val attractionIntroduction: String
+    val category: String
+    val serviceFacilities: String
 }
 
 object TraditionalChinese : MultiLanguage {
@@ -22,6 +29,13 @@ object TraditionalChinese : MultiLanguage {
     override val all: String = "全部"
     override val selectLanguage: String = "選擇語言"
     override val selectCategories: String = "選擇類型"
+    override val businessHours: String = "營業時間"
+    override val address: String = "地址"
+    override val tel: String = "連絡電話"
+    override val url: String = "網址"
+    override val attractionIntroduction: String = "景點介紹"
+    override val category: String = "類型"
+    override val serviceFacilities: String = "服務設施"
 }
 
 object English : MultiLanguage {
@@ -34,4 +48,11 @@ object English : MultiLanguage {
     override val all: String = "All"
     override val selectLanguage: String = "Select language"
     override val selectCategories: String = "Select Categories"
+    override val businessHours: String = "Business hours"
+    override val address: String = "Address"
+    override val tel: String = "Tel"
+    override val url: String = "URL"
+    override val attractionIntroduction: String = "Attraction Introduction"
+    override val category: String = "Category"
+    override val serviceFacilities: String = "Service Facilities"
 }

@@ -3,7 +3,6 @@ package com.example.cathaybkhomework.page.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,18 +11,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -42,7 +35,6 @@ import com.example.cathaybkhomework.common.composable.TextGrid
 import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.data.AttractionItem
 import com.example.myandroid.extension.clickableNoRipple
-import kotlin.math.min
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -50,7 +42,6 @@ fun AttractionCard(
     attraction: AttractionItem,
     onClick: (attraction: AttractionItem) -> Unit
 ) {
-    val imagePageCount = min(attraction.images.size, 10)
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -60,7 +51,7 @@ fun AttractionCard(
             .clickableNoRipple { onClick.invoke(attraction) },
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (imagePageCount == 0) {
+        if (attraction.images.isEmpty()) {
             TextGrid(   //無圖片顯示
                 modifier = Modifier
                     .width(100.dp)
@@ -69,42 +60,16 @@ fun AttractionCard(
                 text = MyLanguage.strings.noImage
             )
         } else {
-            HorizontalPager(
+            GlideImage(
                 modifier = Modifier
                     .width(100.dp)
                     .height(80.dp),
-                state = rememberPagerState(pageCount = { imagePageCount })
-            ) { page ->
-                Box(modifier = Modifier.fillMaxSize()) {
-                    GlideImage(
-                        model = attraction.images[page].src,
-                        contentDescription = "Attraction Image",
-                        contentScale = ContentScale.Crop,
+                model = attraction.images.first().src,
+                contentDescription = "Attraction Image",
+                contentScale = ContentScale.Crop,
 //                    loading = placeholder(R.drawable.ic_image_placehold), //這邊Glide似乎有bug，設定loading placeholder後未滑動前圖片出不來
-                        failure = placeholder(R.drawable.ic_image_error_placehold),
-                    )
-
-                    //首張圖片不顯示向左箭頭
-                    if (page != 0) {
-                        Icon(
-                            modifier = Modifier.align(Alignment.CenterStart),
-                            imageVector = Icons.Filled.KeyboardArrowLeft,
-                            contentDescription = "Prev",
-                            tint = Color.White
-                        )
-                    }
-
-                    //末張圖片不顯示向右箭頭
-                    if (page != imagePageCount - 1) {
-                        Icon(
-                            modifier = Modifier.align(Alignment.CenterEnd),
-                            imageVector = Icons.Filled.KeyboardArrowRight,
-                            contentDescription = "Prev",
-                            tint = Color.White
-                        )
-                    }
-                }
-            }
+                failure = placeholder(R.drawable.ic_image_error_placehold),
+            )
         }
 
         Column(

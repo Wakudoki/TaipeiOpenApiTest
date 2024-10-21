@@ -1,4 +1,4 @@
-package com.example.cathaybkhomework.page.attraction
+package com.example.cathaybkhomework.page.attraction.list
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

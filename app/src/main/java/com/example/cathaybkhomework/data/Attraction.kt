@@ -17,10 +17,17 @@ data class AttractionItem(
     val remind: String,
     val modified: String,
     val images: List<ImageItem>,
+    val category: List<CategoryDetail>,
+    val service: List<ServiceDetail>
 )
 
 data class ImageItem(
     val src: String,
     val subject: String,
     val ext: String
+)
+
+data class ServiceDetail(
+    val id: Int,
+    val name: String,
 )

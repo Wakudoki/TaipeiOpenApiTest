@@ -74,7 +74,7 @@ import com.example.cathaybkhomework.common.composable.LocalThemeModeOf
 import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.data.MyScreens
 import com.example.cathaybkhomework.data.NavigationItem
-import com.example.cathaybkhomework.page.attraction.AttractionFragment
+import com.example.cathaybkhomework.page.attraction.list.AttractionFragment
 import com.example.cathaybkhomework.page.home.HomeFragment
 import com.example.cathaybkhomework.ui.theme.ThemeMode
 import com.example.myandroid.common.language.MyModel

@@ -4,11 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
+import android.webkit.ConsoleMessage
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -24,13 +29,13 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
 import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOriginal
-import com.example.cathaybkhomework.common.composable.LocalColorBackgroundSecondary
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
 import com.example.cathaybkhomework.common.composable.LocalLanguageOf
 import com.example.cathaybkhomework.common.composable.LocalThemeModeOf
 import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.ui.theme.ThemeMode
 import com.example.myandroid.common.language.MyModel
+
 
 class WebViewActivity: ComponentActivity() {
 
@@ -88,9 +93,11 @@ class WebViewActivity: ComponentActivity() {
                             )
                         )
                     },
-                ) {
+                ) { paddingValue ->
                     AndroidView(
-                        modifier = Modifier.background(LocalColorBackgroundOriginal),
+                        modifier = Modifier
+                            .background(LocalColorBackgroundOriginal)
+                            .padding(paddingValue),
                         factory = {
                             WebView(it).apply {
                                 this.layoutParams = ViewGroup.LayoutParams(
@@ -103,7 +110,36 @@ class WebViewActivity: ComponentActivity() {
                                         WebSettingsCompat.FORCE_DARK_AUTO
                                     )
                                 }
-                                settings.javaScriptEnabled = true
+                                settings.apply {
+                                    //支援js交互
+                                    javaScriptEnabled = true
+                                    //將圖片調整到適合webView的大小
+                                    useWideViewPort = true
+                                    //縮放至螢幕的大小
+                                    loadWithOverviewMode = true
+                                    //縮放操作
+                                    setSupportZoom(false)
+                                    builtInZoomControls = true
+                                    displayZoomControls = true
+                                    //是否支援透過JS開啟新視窗
+                                    javaScriptCanOpenWindowsAutomatically = true
+                                    //不載入快取內容
+                                    cacheMode = WebSettings.LOAD_NO_CACHE
+                                    //部分網頁需開啟dom storage才能加載
+                                    domStorageEnabled = true
+                                }
+
+                                setWebChromeClient(object : WebChromeClient() {
+                                    override fun onConsoleMessage(consoleMessage: ConsoleMessage): Boolean {
+                                        Log.d(
+                                            "MyApplication",
+                                            (consoleMessage.message() + " -- From line "
+                                                    + consoleMessage.lineNumber() + " of "
+                                                    + consoleMessage.sourceId())
+                                        )
+                                        return super.onConsoleMessage(consoleMessage)
+                                    }
+                                })
                             }
                         },
                         update = {

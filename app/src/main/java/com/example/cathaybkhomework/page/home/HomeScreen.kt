@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -37,6 +38,8 @@ import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOrigin
 import com.example.cathaybkhomework.common.composable.LocalColorBluePrimary
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
 import com.example.cathaybkhomework.common.language.MyLanguage
+import com.example.cathaybkhomework.page.attraction.detail.AttractionDetailActivity
+import com.example.cathaybkhomework.page.wabview.WebViewActivity
 import com.example.myandroid.extension.clickableNoRipple
 import kotlin.math.min
 
@@ -45,6 +48,7 @@ import kotlin.math.min
 fun HomeScreen(
     viewModel: HomeViewModel,
 ) {
+    val context = LocalContext.current
     val newsData = viewModel.news.collectAsState()
     val attractionData = viewModel.attractions.collectAsState()
     val news = newsData.value?.data ?: emptyList()
@@ -102,7 +106,18 @@ fun HomeScreen(
                 items(
                     count = min(news.size, newsDisplayCount.intValue)
                 ) { index ->
-                    NewsCard(news[index])
+                    NewsCard(
+                        news = news[index],
+                        onClick = {
+                            context.startActivity(
+                                WebViewActivity.newIntent(
+                                    context = context,
+                                    url = it.url,
+                                    title = MyLanguage.strings.latestNews
+                                )
+                            )
+                        }
+                    )
                 }
 
                 item {
@@ -163,7 +178,13 @@ fun HomeScreen(
                     AttractionCard(
                         attraction = attractions[index],
                         onClick = {
-                            //TODO
+                            context.startActivity(
+                                AttractionDetailActivity.newIntent(
+                                    context = context,
+                                    attractionItem = it,
+                                    title = attractions[index].name
+                                )
+                            )
                         }
                     )
                 }
@@ -186,7 +207,7 @@ fun HomeScreen(
                             Text(
                                 text = MyLanguage.strings.showMore,
                                 style = TextStyle(
-                                    fontSize = 10.sp,
+                                    fontSize = 12.sp,
                                     color = LocalColorBluePrimary,
                                     textAlign = TextAlign.End
                                 )

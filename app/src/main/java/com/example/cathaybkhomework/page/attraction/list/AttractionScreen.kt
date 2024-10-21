@@ -1,4 +1,4 @@
-package com.example.cathaybkhomework.page.attraction
+package com.example.cathaybkhomework.page.attraction.list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -115,37 +115,5 @@ fun AttractionScreen(
                 }
             }
         }
-    }
-}
-
-@Composable
-fun SelectedCategoriesItem(
-    modifier: Modifier = Modifier,
-    text: String,
-    fontSize: TextUnit = 24.sp
-) {
-    Row(
-        modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(LocalColorBluePrimary)
-            .padding(horizontal = 6.dp, vertical = 2.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = text,
-            color = Color.White,
-            fontSize = fontSize
-        )
-
-        Spacer(modifier = Modifier.width(2.dp))
-
-        Icon(
-            modifier = Modifier
-                .rotate(45f)
-                .scale(0.8f),
-            imageVector = Icons.Default.AddCircle,
-            contentDescription = "Close",
-            tint = Color.White
-        )
     }
 }

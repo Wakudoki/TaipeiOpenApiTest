@@ -28,6 +28,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationDrawerItemColors
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -305,7 +306,10 @@ class MainActivity : FragmentActivity() {
         ModalNavigationDrawer(
             drawerState = drawerState,
             drawerContent = {
-                ModalDrawerSheet {
+                ModalDrawerSheet(
+                    drawerContentColor = LocalColorTextTitle,
+                    drawerContainerColor = LocalColorBackgroundOriginal
+                ) {
                     Spacer(modifier = Modifier.height(16.dp)) //space (margin) from top
                     NavigationItem.entries.forEachIndexed { index, item ->
                         NavigationDrawerItem(
@@ -362,6 +366,14 @@ class MainActivity : FragmentActivity() {
                                     drawerState.close()
                                 }
                             },
+                            colors = NavigationDrawerItemDefaults.colors(
+                                selectedContainerColor = LocalColorBackgroundSecondary,
+                                selectedTextColor = LocalColorTextTitle,
+                                selectedIconColor = LocalColorTextTitle,
+                                unselectedTextColor = LocalColorTextTitle,
+                                unselectedIconColor = LocalColorTextTitle
+
+                            ),
                             icon = {
                                 Icon(
                                     imageVector = if (index == selectedItemIndex) {

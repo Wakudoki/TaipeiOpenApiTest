@@ -18,6 +18,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -49,6 +53,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -88,4 +93,13 @@ dependencies {
 
     //Webview
     implementation(libs.androidx.webkit)
+
+    // testing retrofit responses
+    testImplementation (libs.mockwebserver)
+    testImplementation (libs.mockito.kotlin)
+
+    // Koin testing tools
+    testImplementation( libs.koin.test)
+    // Needed JUnit version
+    testImplementation( libs.koin.test.junit4)
 }

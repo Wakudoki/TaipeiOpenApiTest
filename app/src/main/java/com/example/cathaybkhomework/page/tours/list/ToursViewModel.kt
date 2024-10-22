@@ -38,6 +38,7 @@ class ToursViewModel(
     private suspend fun fetchTours() {
         kotlin.runCatching {
             loading()
+            _tours.value = null
             travelApiRepository.getTours()
         }.onSuccess {
             _tours.value = it

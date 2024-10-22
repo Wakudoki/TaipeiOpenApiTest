@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cathaybkhomework.R
+import com.example.cathaybkhomework.common.composable.EmptyScreen
 import com.example.cathaybkhomework.common.composable.LoadingGradient
 import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOriginal
 import com.example.cathaybkhomework.common.composable.LocalColorBackgroundSecondary
@@ -54,8 +55,8 @@ fun ActivityEventScreen(
     val isRefreshing = viewModel.refreshingState.collectAsState()
     val isLoading = viewModel.loadingState.collectAsState()
 
-    val activityEventEventData = viewModel.activityEventEvent.collectAsState()
-    val activityEventEvent = activityEventEventData.value?.data ?: emptyList()
+    val activityEventData = viewModel.activityEvent.collectAsState()
+    val activityEvent = activityEventData.value?.data ?: emptyList()
 
     val context = LocalContext.current
 
@@ -94,22 +95,28 @@ fun ActivityEventScreen(
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(
-                        count = activityEventEvent.size
-                    ) { index ->
-                        ActivityEventCard(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp),
-                            activityEvent = activityEventEvent[index]
-                        ) {
-                            context.startActivity(
-                                ActivityEventDetailActivity.newIntent(
-                                    context = context,
-                                    title = it.title,
-                                    activityEventItem = it
+                    if (activityEvent.isEmpty()) {
+                        item {
+                            EmptyScreen(sizeInDp)
+                        }
+                    } else {
+                        items(
+                            count = activityEvent.size
+                        ) { index ->
+                            ActivityEventCard(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp),
+                                activityEvent = activityEvent[index]
+                            ) {
+                                context.startActivity(
+                                    ActivityEventDetailActivity.newIntent(
+                                        context = context,
+                                        title = it.title,
+                                        activityEventItem = it
+                                    )
                                 )
-                            )
+                            }
                         }
                     }
                 }
@@ -155,14 +162,10 @@ fun ActivityEventCard(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = TimeUtils.parseTime(
-                        timeString = activityEvent.begin,
-                        outputFormat = TimeUtils.yyyyMMdd
-                    ) + "~" +
-                            TimeUtils.parseTime(
-                                timeString = activityEvent.end,
-                                outputFormat = TimeUtils.yyyyMMdd
-                            ),
+                    text = TimeUtils.getDurationDate(
+                        beginTimeString = activityEvent.begin,
+                        endTimeString = activityEvent.end
+                    ),
                     style = TextStyle(
                         fontSize = 12.sp,
                     ),

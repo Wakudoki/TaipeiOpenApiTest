@@ -18,8 +18,8 @@ class ActivityEventViewModel(
     private val languageRepository: LanguageRepository
 ) : ViewModel(), LoadingState by LoadingStateImpl() {
 
-    private val _activityEventEvent = MutableStateFlow<ActivityEvent?>(null)
-    val activityEventEvent = _activityEventEvent.asStateFlow()
+    private val _activityEvent = MutableStateFlow<ActivityEvent?>(null)
+    val activityEvent = _activityEvent.asStateFlow()
 
     init {
         viewModelScope.launch {
@@ -40,11 +40,11 @@ class ActivityEventViewModel(
             loading()
             travelApiRepository.getActivityEvent()
         }.onSuccess {
-            _activityEventEvent.value = it
+            _activityEvent.value = it
             noLoading()
             noRefreshing()
         }.onFailure {
-            Log.e("AttractionViewModel-fetchCategories", it.message.toString())
+            Log.e("ActivityEventViewModel-fetchActivityEvent", it.message.toString())
             noLoading()
             noRefreshing()
         }

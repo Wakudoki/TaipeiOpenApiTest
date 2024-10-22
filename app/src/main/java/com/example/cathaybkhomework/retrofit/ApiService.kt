@@ -29,7 +29,7 @@ interface ApiService {
 
     @Headers("accept: application/json")
     @GET
-    suspend fun getEventCalender(@Url url: String = MyConst.BASE_URL_GET + "${MyModel.languageKey}/Events/Calender"): EventCalendar
+    suspend fun getEventCalender(@Url url: String = MyConst.BASE_URL_GET + "${MyModel.languageKey}/Events/Calendar"): EventCalendar
 
     @Headers("accept: application/json")
     @GET

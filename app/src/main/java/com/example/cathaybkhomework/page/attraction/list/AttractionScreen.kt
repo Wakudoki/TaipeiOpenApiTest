@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.cathaybkhomework.R
+import com.example.cathaybkhomework.common.composable.EmptyScreen
 import com.example.cathaybkhomework.common.composable.LoadingGradient
 import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOriginal
 import com.example.cathaybkhomework.common.composable.LocalColorBackgroundSecondary
@@ -133,24 +134,30 @@ fun AttractionScreen(
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(
-                        count = attractions.size
-                    ) { index ->
-                        AttractionCard(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp),
-                            attraction = attractions[index],
-                            onClick = {
-                                context.startActivity(
-                                    AttractionDetailActivity.newIntent(
-                                        context = context,
-                                        attractionItem = it,
-                                        title = attractions[index].name
+                    if (attractions.isEmpty()) {
+                        item {
+                            EmptyScreen(sizeInDp)
+                        }
+                    } else {
+                        items(
+                            count = attractions.size
+                        ) { index ->
+                            AttractionCard(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp),
+                                attraction = attractions[index],
+                                onClick = {
+                                    context.startActivity(
+                                        AttractionDetailActivity.newIntent(
+                                            context = context,
+                                            attractionItem = it,
+                                            title = attractions[index].name
+                                        )
                                     )
-                                )
-                            }
-                        )
+                                }
+                            )
+                        }
                     }
                 }
             }

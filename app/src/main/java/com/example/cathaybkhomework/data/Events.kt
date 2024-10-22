@@ -45,11 +45,15 @@ data class EventCalendar(
 )
 
 data class EventCalendarItem(
-    val title: Int,
+    val id: Int,
+    val tel: String,
+    val title: String,
+    val is_major: Boolean,
     val description: String,
     val begin: String,
     val end: String,
     val posted: String,
     val modified: String,
-    val url: String
+    val url: String,
+    val links: List<Link>
 )

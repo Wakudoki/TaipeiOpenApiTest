@@ -25,6 +25,7 @@ interface MultiLanguage {
     val postedDate: String
     val modifiedDate: String
     val links: String
+    val recommend: String
 }
 
 object TraditionalChinese : MultiLanguage {
@@ -52,6 +53,7 @@ object TraditionalChinese : MultiLanguage {
     override val postedDate: String = "發佈日期"
     override val modifiedDate: String = "更新日期"
     override val links: String = "相關連結"
+    override val recommend: String = "推薦"
 }
 
 object English : MultiLanguage {
@@ -79,4 +81,5 @@ object English : MultiLanguage {
     override val postedDate: String = "Post Date"
     override val modifiedDate: String = "Updates"
     override val links: String = "Links"
+    override val recommend: String = "Recommend"
 }

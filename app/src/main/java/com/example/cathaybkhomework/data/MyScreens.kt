@@ -2,5 +2,8 @@ package com.example.cathaybkhomework.data
 
 enum class MyScreens {
     Home,
-    Attraction
+    Attraction,
+    ActivityEvent,
+    EventCalendar,
+    Tours
 }

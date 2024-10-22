@@ -30,6 +30,7 @@ import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
 import com.example.cathaybkhomework.common.ext.toAnnotatedString
 import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.data.NewsItem
+import com.example.cathaybkhomework.utils.TimeUtils
 import com.example.myandroid.extension.clickableNoRipple
 
 @Composable
@@ -59,9 +60,9 @@ fun NewsCard(
         Spacer(modifier = Modifier.height(4.dp))
 
         Text(
-            text = news.modified,
+            text = TimeUtils.parseTime(news.modified),
             style = TextStyle(
-                fontSize = 8.sp,
+                fontSize = 12.sp,
                 color = LocalColorTextSubtitle
             )
         )

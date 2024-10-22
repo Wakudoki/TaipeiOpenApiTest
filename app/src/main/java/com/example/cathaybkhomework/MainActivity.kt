@@ -74,8 +74,11 @@ import com.example.cathaybkhomework.common.composable.LocalThemeModeOf
 import com.example.cathaybkhomework.common.language.MyLanguage
 import com.example.cathaybkhomework.data.MyScreens
 import com.example.cathaybkhomework.data.NavigationItem
+import com.example.cathaybkhomework.page.activity.ActivityEventFragment
 import com.example.cathaybkhomework.page.attraction.list.AttractionFragment
+import com.example.cathaybkhomework.page.calendar.EventCalendarFragment
 import com.example.cathaybkhomework.page.home.HomeFragment
+import com.example.cathaybkhomework.page.tours.ToursFragment
 import com.example.cathaybkhomework.ui.theme.ThemeMode
 import com.example.myandroid.common.language.MyModel
 import com.example.myandroid.extension.clickableNoRipple
@@ -258,6 +261,9 @@ class MainActivity : FragmentActivity() {
                     val fragment = when (item.route) {
                         MyScreens.Home.name -> HomeFragment()
                         MyScreens.Attraction.name -> AttractionFragment()
+                        MyScreens.ActivityEvent.name -> ActivityEventFragment()
+                        MyScreens.EventCalendar.name -> EventCalendarFragment()
+                        MyScreens.Tours.name -> ToursFragment()
                         else -> HomeFragment()
                     }
 
@@ -305,6 +311,9 @@ class MainActivity : FragmentActivity() {
                                     text = when (item.route) {
                                         MyScreens.Home.name -> MyLanguage.strings.home
                                         MyScreens.Attraction.name -> MyLanguage.strings.attraction
+                                        MyScreens.ActivityEvent.name -> MyLanguage.strings.activityEvent
+                                        MyScreens.EventCalendar.name -> MyLanguage.strings.EventCalendar
+                                        MyScreens.Tours.name -> MyLanguage.strings.tours
                                         else -> MyLanguage.strings.home
                                     },
                                     color = LocalColorTextTitle
@@ -319,6 +328,22 @@ class MainActivity : FragmentActivity() {
 
                                     MyScreens.Attraction.name -> {
                                         title.value = MyLanguage.strings.attraction
+                                    }
+
+                                    MyScreens.ActivityEvent.name -> {
+                                        title.value = MyLanguage.strings.activityEvent
+                                    }
+
+                                    MyScreens.EventCalendar.name -> {
+                                        title.value = MyLanguage.strings.EventCalendar
+                                    }
+
+                                    MyScreens.Tours.name -> {
+                                        title.value = MyLanguage.strings.tours
+                                    }
+
+                                    else -> {
+                                        title.value = MyLanguage.strings.home
                                     }
                                 }
                                 navController.navigate(item.route) {

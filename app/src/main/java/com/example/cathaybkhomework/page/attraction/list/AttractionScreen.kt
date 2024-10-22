@@ -117,9 +117,7 @@ fun AttractionScreen(
                 horizontalArrangement = Arrangement.End
             ) {
                 Icon(
-                    modifier = Modifier
-                        .size(32.dp)
-                        .weight(1f),
+                    modifier = Modifier.size(28.dp),
                     painter = painterResource(R.drawable.ic_filter),
                     contentDescription = "Filter",
                     tint = LocalColorBluePrimary
@@ -183,12 +181,7 @@ private fun CategoryDialog(
     var selectedCategoryMap by remember {
         mutableStateOf(
             categories.associateWith {
-                //沒有被選擇的類型，表示全選
-                if (selectedCategories.isEmpty()) {
-                    true
-                } else {
-                    it.id in selectedCategories
-                }
+                it.id in selectedCategories
             }
         )
     }

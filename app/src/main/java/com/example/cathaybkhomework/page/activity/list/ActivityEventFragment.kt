@@ -1,4 +1,4 @@
-package com.example.cathaybkhomework.page.activity
+package com.example.cathaybkhomework.page.activity.list
 
 import android.os.Bundle
 import android.view.LayoutInflater

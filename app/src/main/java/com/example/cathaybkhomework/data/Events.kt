@@ -1,6 +1,6 @@
 package com.example.cathaybkhomework.data
 
-data class News (
+data class News(
     val total: Int,
     val data: List<NewsItem>
 )
@@ -15,16 +15,16 @@ data class NewsItem(
     val links: List<Link>
 )
 
-data class Activity(
+data class ActivityEvent(
     val total: Int,
-    val data: List<ActivityItem>
+    val data: List<ActivityEventItem>
 )
 
-data class ActivityItem(
+data class ActivityEventItem(
     val id: Int,
     val contact: String,
     val tel: String,
-    val title: Int,
+    val title: String,
     val description: String,
     val begin: String,
     val end: String,
@@ -39,12 +39,12 @@ data class Link(
     val subject: String
 )
 
-data class Calendar(
+data class EventCalendar(
     val total: Int,
-    val data: List<CalendarItem>
+    val data: List<EventCalendarItem>
 )
 
-data class CalendarItem(
+data class EventCalendarItem(
     val title: Int,
     val description: String,
     val begin: String,

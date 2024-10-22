@@ -1,7 +1,7 @@
 package com.example.cathaybkhomework.module
 
 import com.example.cathaybkhomework.MainViewModel
-import com.example.cathaybkhomework.page.activity.ActivityEventViewModel
+import com.example.cathaybkhomework.page.activity.list.ActivityEventViewModel
 import com.example.cathaybkhomework.page.attraction.list.AttractionViewModel
 import com.example.cathaybkhomework.page.calendar.EventCalendarViewModel
 import com.example.cathaybkhomework.page.home.HomeViewModel

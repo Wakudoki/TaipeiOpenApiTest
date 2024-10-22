@@ -1,10 +1,10 @@
 package com.example.cathaybkhomework.repositories
 
 import com.example.cathaybkhomework.common.MyConst
-import com.example.cathaybkhomework.data.Activity
+import com.example.cathaybkhomework.data.ActivityEvent
 import com.example.cathaybkhomework.data.Attraction
 import com.example.cathaybkhomework.data.Audio
-import com.example.cathaybkhomework.data.Calendar
+import com.example.cathaybkhomework.data.EventCalendar
 import com.example.cathaybkhomework.data.Category
 import com.example.cathaybkhomework.data.CategoryDetail
 import com.example.cathaybkhomework.data.CategoryType
@@ -31,12 +31,12 @@ class TravelApiRepository(
         return apiService.getNews()
     }
 
-    suspend fun getActivity(): Activity {
-        return apiService.getActivity()
+    suspend fun getActivityEvent(): ActivityEvent {
+        return apiService.getActivityEvent()
     }
 
-    suspend fun getCalendar(): Calendar {
-        return apiService.getCalender()
+    suspend fun getEventCalendar(): EventCalendar {
+        return apiService.getEventCalender()
     }
 
     suspend fun getPanos(): Panos {

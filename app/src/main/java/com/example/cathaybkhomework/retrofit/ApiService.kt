@@ -1,10 +1,10 @@
 package com.example.cathaybkhomework.retrofit
 
 import com.example.cathaybkhomework.common.MyConst
-import com.example.cathaybkhomework.data.Activity
+import com.example.cathaybkhomework.data.ActivityEvent
 import com.example.cathaybkhomework.data.Attraction
 import com.example.cathaybkhomework.data.Audio
-import com.example.cathaybkhomework.data.Calendar
+import com.example.cathaybkhomework.data.EventCalendar
 import com.example.cathaybkhomework.data.Category
 import com.example.cathaybkhomework.data.News
 import com.example.cathaybkhomework.data.Panos
@@ -25,11 +25,11 @@ interface ApiService {
 
     @Headers("accept: application/json")
     @GET
-    suspend fun getActivity(@Url url: String = MyConst.BASE_URL_GET + "${MyModel.languageKey}/Events/Activity"): Activity
+    suspend fun getActivityEvent(@Url url: String = MyConst.BASE_URL_GET + "${MyModel.languageKey}/Events/Activity"): ActivityEvent
 
     @Headers("accept: application/json")
     @GET
-    suspend fun getCalender(@Url url: String = MyConst.BASE_URL_GET + "${MyModel.languageKey}/Events/Calender"): Calendar
+    suspend fun getEventCalender(@Url url: String = MyConst.BASE_URL_GET + "${MyModel.languageKey}/Events/Calender"): EventCalendar
 
     @Headers("accept: application/json")
     @GET

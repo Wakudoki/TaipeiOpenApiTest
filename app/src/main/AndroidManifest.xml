@@ -33,6 +33,9 @@
         <activity
             android:name=".page.attraction.detail.AttractionDetailActivity"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".page.activity.detail.ActivityEventDetailActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

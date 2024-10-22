@@ -21,6 +21,10 @@ interface MultiLanguage {
     val category: String
     val serviceFacilities: String
     val clearAll: String
+    val eventTime: String
+    val postedDate: String
+    val modifiedDate: String
+    val links: String
 }
 
 object TraditionalChinese : MultiLanguage {
@@ -44,6 +48,10 @@ object TraditionalChinese : MultiLanguage {
     override val category: String = "類型"
     override val serviceFacilities: String = "服務設施"
     override val clearAll: String = "清除全部"
+    override val eventTime: String = "活動時間"
+    override val postedDate: String = "發佈日期"
+    override val modifiedDate: String = "更新日期"
+    override val links: String = "相關連結"
 }
 
 object English : MultiLanguage {
@@ -67,4 +75,8 @@ object English : MultiLanguage {
     override val category: String = "Category"
     override val serviceFacilities: String = "Service Facilities"
     override val clearAll: String = "Clear All"
+    override val eventTime: String = "Event Time"
+    override val postedDate: String = "Post Date"
+    override val modifiedDate: String = "Updates"
+    override val links: String = "Links"
 }

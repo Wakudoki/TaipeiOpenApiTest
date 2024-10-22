@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -58,8 +59,8 @@ fun HomeScreen(
     val isAttractionLoading = viewModel.loadingAttractionState.collectAsState()
     val isRefreshing = viewModel.refreshingState.collectAsState()
 
-    val newsDisplayCount = remember { mutableIntStateOf(3) }
-    val attractionsDisplayCount = remember { mutableIntStateOf(3) }
+    val newsDisplayCount = rememberSaveable { mutableIntStateOf(3) }
+    val attractionsDisplayCount = rememberSaveable { mutableIntStateOf(3) }
 
     //讓空資料的提醒能置中
     val density = LocalDensity.current

@@ -20,6 +20,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -48,6 +49,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -123,14 +125,15 @@ class MainActivity : FragmentActivity() {
         val language = viewModel.languageKey.collectAsState()
         val isDarkMode = LocalIsDarkTheme
         val systemBarStyle = if (isDarkMode) {
-            SystemBarStyle.dark(Color.TRANSPARENT)
+            SystemBarStyle.dark(LocalColorBackgroundOriginal.toArgb())
         } else {
-            SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
+            SystemBarStyle.light(LocalColorBackgroundOriginal.toArgb(), LocalColorBackgroundOriginal.toArgb())
         }
         enableEdgeToEdge(
             statusBarStyle = systemBarStyle,
             navigationBarStyle = systemBarStyle
         )
+
         val navController = rememberNavController()
         var languageExpandState by remember { mutableStateOf(false) }
         val title = mutableStateOf(

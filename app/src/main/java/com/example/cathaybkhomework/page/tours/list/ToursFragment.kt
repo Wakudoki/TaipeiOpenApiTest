@@ -1,4 +1,4 @@
-package com.example.cathaybkhomework.page.tours
+package com.example.cathaybkhomework.page.tours.list
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -5,7 +5,7 @@ import com.example.cathaybkhomework.page.activity.list.ActivityEventViewModel
 import com.example.cathaybkhomework.page.attraction.list.AttractionViewModel
 import com.example.cathaybkhomework.page.calendar.EventCalendarViewModel
 import com.example.cathaybkhomework.page.home.HomeViewModel
-import com.example.cathaybkhomework.page.tours.ToursViewModel
+import com.example.cathaybkhomework.page.tours.list.ToursViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

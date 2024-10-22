@@ -7,8 +7,10 @@ data class Tours(
 
 data class TourItem(
     val id: Int,
-    val title: Int,
+    val title: String,
     val description: String,
     val url: String,
     val modified: String,
+    val season: List<String>?,
+    val months: List<String>?
 )

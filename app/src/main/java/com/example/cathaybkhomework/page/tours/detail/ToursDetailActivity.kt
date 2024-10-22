@@ -1,4 +1,4 @@
-package com.example.cathaybkhomework.page.activity.detail
+package com.example.cathaybkhomework.page.tours.detail
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -26,32 +26,32 @@ import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
 import com.example.cathaybkhomework.common.composable.LocalLanguageOf
 import com.example.cathaybkhomework.common.composable.LocalThemeModeOf
 import com.example.cathaybkhomework.common.language.MyLanguage
-import com.example.cathaybkhomework.data.ActivityEventItem
+import com.example.cathaybkhomework.data.TourItem
 import com.example.cathaybkhomework.ui.theme.ThemeMode
 import com.example.myandroid.common.language.MyModel
 import com.google.gson.Gson
 
-class ActivityEventDetailActivity : ComponentActivity() {
+class ToursDetailActivity : ComponentActivity() {
 
     companion object {
         fun newIntent(
             context: Context,
             title: String,
-            activityEventItem: ActivityEventItem
+            tourItem: TourItem
         ): Intent {
-            return Intent(context, ActivityEventDetailActivity::class.java).apply {
+            return Intent(context, ToursDetailActivity::class.java).apply {
                 putExtra("title", title)
-                putExtra("activityEventItem", Gson().toJson(activityEventItem))
+                putExtra("tourItem", Gson().toJson(tourItem))
             }
         }
     }
 
     private val title by lazy {
-        intent.getStringExtra("title") ?: MyLanguage.strings.activityEvent
+        intent.getStringExtra("title") ?: MyLanguage.strings.tours
     }
 
-    private val activityEventItem by lazy {
-        Gson().fromJson(intent.getStringExtra("activityEventItem"), ActivityEventItem::class.java)
+    private val tourItem by lazy {
+        Gson().fromJson(intent.getStringExtra("tourItem"), TourItem::class.java)
     }
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -88,12 +88,12 @@ class ActivityEventDetailActivity : ComponentActivity() {
                         )
                     },
                 ) { paddingValue ->
-                    ActivityEventDetailScreen(
+                    ToursDetailScreen(
                         modifier = Modifier
                             .background(LocalColorBackgroundOriginal)
                             .verticalScroll(rememberScrollState())
                             .padding(paddingValue),
-                        activityEventItem = activityEventItem
+                        tourItem = tourItem
                     )
                 }
             }

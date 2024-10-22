@@ -193,6 +193,7 @@ fun EventCalendarCard(
         Row(
             modifier = modifier
                 .padding(top = 12.dp)
+                .background(LocalColorBackgroundSecondary)
                 .border(width = 1.dp, color = LocalColorLine3)
                 .padding(8.dp)
                 .clickableNoRipple { onClick.invoke(eventCalendarItem) },
@@ -201,7 +202,6 @@ fun EventCalendarCard(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(LocalColorBackgroundSecondary)
                     .padding(horizontal = 8.dp)
                     .padding(bottom = 4.dp)
             ) {

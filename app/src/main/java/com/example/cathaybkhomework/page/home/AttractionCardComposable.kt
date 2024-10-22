@@ -45,6 +45,7 @@ fun AttractionCard(
 ) {
     Row(
         modifier = modifier
+            .background(LocalColorBackgroundSecondary)
             .border(width = 1.dp, color = LocalColorLine3)
             .padding(8.dp)
             .clickableNoRipple { onClick.invoke(attraction) },
@@ -75,7 +76,6 @@ fun AttractionCard(
             modifier = Modifier
                 .fillMaxSize()
                 .height(80.dp)
-                .background(LocalColorBackgroundSecondary)
                 .padding(horizontal = 8.dp)
                 .padding(bottom = 4.dp)
         ) {

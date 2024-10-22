@@ -1,4 +1,4 @@
-package com.example.cathaybkhomework.page.activity.list
+package com.example.cathaybkhomework.page.tours.list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -24,7 +24,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -42,21 +41,20 @@ import com.example.cathaybkhomework.common.composable.LocalColorBluePrimary
 import com.example.cathaybkhomework.common.composable.LocalColorLine3
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
 import com.example.cathaybkhomework.common.language.MyLanguage
-import com.example.cathaybkhomework.data.ActivityEventItem
-import com.example.cathaybkhomework.page.activity.detail.ActivityEventDetailActivity
-import com.example.cathaybkhomework.utils.TimeUtils
+import com.example.cathaybkhomework.data.TourItem
+import com.example.cathaybkhomework.page.tours.detail.ToursDetailActivity
 import com.example.myandroid.extension.clickableNoRipple
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ActivityEventScreen(
-    viewModel: ActivityEventViewModel
+fun ToursScreen(
+    viewModel: ToursViewModel
 ) {
     val isRefreshing = viewModel.refreshingState.collectAsState()
     val isLoading = viewModel.loadingState.collectAsState()
 
-    val activityEventData = viewModel.activityEvent.collectAsState()
-    val activityEvent = activityEventData.value?.data ?: emptyList()
+    val toursData = viewModel.tours.collectAsState()
+    val tours = toursData.value?.data ?: emptyList()
 
     val context = LocalContext.current
 
@@ -95,25 +93,25 @@ fun ActivityEventScreen(
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    if (activityEvent.isEmpty()) {
+                    if (tours.isEmpty()) {
                         item {
                             EmptyScreen(sizeInDp)
                         }
                     } else {
                         items(
-                            count = activityEvent.size
+                            count = tours.size
                         ) { index ->
-                            ActivityEventCard(
+                            ToursCard(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(horizontal = 16.dp),
-                                activityEvent = activityEvent[index]
+                                tourItem = tours[index]
                             ) {
                                 context.startActivity(
-                                    ActivityEventDetailActivity.newIntent(
+                                    ToursDetailActivity.newIntent(
                                         context = context,
                                         title = it.title,
-                                        activityEventItem = it
+                                        tourItem = it
                                     )
                                 )
                             }
@@ -126,17 +124,17 @@ fun ActivityEventScreen(
 }
 
 @Composable
-fun ActivityEventCard(
+fun ToursCard(
     modifier: Modifier = Modifier,
-    activityEvent: ActivityEventItem,
-    onClick: (activityEvent: ActivityEventItem) -> Unit
+    tourItem: TourItem,
+    onClick: (tourItem: TourItem) -> Unit
 ) {
     Row(
         modifier = modifier
             .background(LocalColorBackgroundSecondary)
             .border(width = 1.dp, color = LocalColorLine3)
             .padding(8.dp)
-            .clickableNoRipple { onClick.invoke(activityEvent) },
+            .clickableNoRipple { onClick.invoke(tourItem) },
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
@@ -146,7 +144,7 @@ fun ActivityEventCard(
                 .padding(bottom = 4.dp)
         ) {
             Text(
-                text = activityEvent.title,
+                text = tourItem.title,
                 style = TextStyle(
                     fontSize = 16.sp
                 ),
@@ -160,20 +158,8 @@ fun ActivityEventCard(
                     .fillMaxWidth()
                     .padding(top = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.End
             ) {
-                Text(
-                    text = TimeUtils.getDurationDate(
-                        beginTimeString = activityEvent.begin,
-                        endTimeString = activityEvent.end
-                    ),
-                    style = TextStyle(
-                        fontSize = 12.sp,
-                    ),
-                    color = Color.Red.copy(alpha = .8f)
-                )
-
-                Spacer(modifier = Modifier.weight(1f))
-
                 Text(
                     text = MyLanguage.strings.viewDetail,
                     style = TextStyle(

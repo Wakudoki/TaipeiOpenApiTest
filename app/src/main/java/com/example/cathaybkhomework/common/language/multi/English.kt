@@ -1,0 +1,36 @@
+package com.example.cathaybkhomework.common.language.multi
+
+import com.example.cathaybkhomework.common.language.MultiLanguage
+
+object English : MultiLanguage {
+    override val latestNews: String = "Latest News"
+    override val showMore: String = "Show More"
+    override val home: String = "Home"
+    override val attraction: String = "Attraction"
+    override val activityEvent: String = "Event"
+    override val EventCalendar: String = "Event Calendar"
+    override val tours: String = "Themed Itineraries"
+    override val viewDetail: String = "View Details"
+    override val noImage: String = "No Image"
+    override val all: String = "All"
+    override val selectLanguage: String = "Select language"
+    override val selectCategories: String = "Select Categories"
+    override val businessHours: String = "Business hours"
+    override val address: String = "Address"
+    override val tel: String = "Tel"
+    override val url: String = "URL"
+    override val attractionIntroduction: String = "Attraction Introduction"
+    override val category: String = "Category"
+    override val serviceFacilities: String = "Service Facilities"
+    override val clearAll: String = "Clear All"
+    override val eventTime: String = "Event Time"
+    override val postedDate: String = "Post Date"
+    override val modifiedDate: String = "Updates"
+    override val links: String = "Links"
+    override val recommend: String = "Recommend"
+    override val spring: String = "Spring"
+    override val summer: String = "Summer"
+    override val autumn: String = "Autumn"
+    override val winter: String = "Winter"
+    override val emptyContent: String = "No Data"
+}

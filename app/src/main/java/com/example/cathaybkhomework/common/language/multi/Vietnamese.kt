@@ -1,0 +1,36 @@
+package com.example.cathaybkhomework.common.language.multi
+
+import com.example.cathaybkhomework.common.language.MultiLanguage
+
+object Vietnamese : MultiLanguage {
+    override val latestNews: String = "Tin tức mới nhất"
+    override val showMore: String = "Hiển thị thêm"
+    override val home: String = "Trang chủ"
+    override val attraction: String = "Điểm tham quan"
+    override val activityEvent: String = "Sự kiện"
+    override val EventCalendar: String = "Lịch sự kiện"
+    override val tours: String = "Lịch trình theo chủ đề"
+    override val viewDetail: String = "Xem chi tiết"
+    override val noImage: String = "Không có hình ảnh"
+    override val all: String = "Tất cả"
+    override val selectLanguage: String = "Chọn ngôn ngữ"
+    override val selectCategories: String = "Chọn loại"
+    override val businessHours: String = "Giờ làm việc"
+    override val address: String = "Địa chỉ"
+    override val tel: String = "Điện thoại"
+    override val url: String = "URL"
+    override val attractionIntroduction: String = "Giới thiệu điểm tham quan"
+    override val category: String = "Loại"
+    override val serviceFacilities: String = "Cơ sở vật chất"
+    override val clearAll: String = "Xóa tất cả"
+    override val eventTime: String = "Thời gian sự kiện"
+    override val postedDate: String = "Ngày đăng"
+    override val modifiedDate: String = "Ngày cập nhật"
+    override val links: String = "Liên kết"
+    override val recommend: String = "Đề xuất"
+    override val spring: String = "Mùa xuân"
+    override val summer: String = "Mùa hè"
+    override val autumn: String = "Mùa thu"
+    override val winter: String = "Mùa đông"
+    override val emptyContent: String = "Không có dữ liệu"
+}

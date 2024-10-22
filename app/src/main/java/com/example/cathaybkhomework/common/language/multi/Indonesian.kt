@@ -1,0 +1,36 @@
+package com.example.cathaybkhomework.common.language.multi
+
+import com.example.cathaybkhomework.common.language.MultiLanguage
+
+object Indonesian : MultiLanguage {
+    override val latestNews: String = "Berita Terbaru"
+    override val showMore: String = "Tampilkan Lebih Banyak"
+    override val home: String = "Beranda"
+    override val attraction: String = "Daya Tarik"
+    override val activityEvent: String = "Acara"
+    override val EventCalendar: String = "Kalender Acara"
+    override val tours: String = "Rencana Tematik"
+    override val viewDetail: String = "Lihat Detail"
+    override val noImage: String = "Tidak Ada Gambar"
+    override val all: String = "Semua"
+    override val selectLanguage: String = "Pilih Bahasa"
+    override val selectCategories: String = "Pilih Kategori"
+    override val businessHours: String = "Jam Buka"
+    override val address: String = "Alamat"
+    override val tel: String = "Telepon"
+    override val url: String = "URL"
+    override val attractionIntroduction: String = "Pengantar Daya Tarik"
+    override val category: String = "Kategori"
+    override val serviceFacilities: String = "Fasilitas Layanan"
+    override val clearAll: String = "Hapus Semua"
+    override val eventTime: String = "Waktu Acara"
+    override val postedDate: String = "Tanggal Posting"
+    override val modifiedDate: String = "Tanggal Pembaruan"
+    override val links: String = "Tautan"
+    override val recommend: String = "Rekomendasi"
+    override val spring: String = "Musim Semi"
+    override val summer: String = "Musim Panas"
+    override val autumn: String = "Musim Gugur"
+    override val winter: String = "Musim Dingin"
+    override val emptyContent: String = "Tidak Ada Data"
+}

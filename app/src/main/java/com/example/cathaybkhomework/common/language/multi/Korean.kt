@@ -1,0 +1,36 @@
+package com.example.cathaybkhomework.common.language.multi
+
+import com.example.cathaybkhomework.common.language.MultiLanguage
+
+object Korean : MultiLanguage {
+    override val latestNews: String = "최신 뉴스"
+    override val showMore: String = "더 보기"
+    override val home: String = "홈"
+    override val attraction: String = "관광지"
+    override val activityEvent: String = "이벤트"
+    override val EventCalendar: String = "이벤트 캘린더"
+    override val tours: String = "테마 여행"
+    override val viewDetail: String = "세부 사항 보기"
+    override val noImage: String = "이미지 없음"
+    override val all: String = "모두"
+    override val selectLanguage: String = "언어 선택"
+    override val selectCategories: String = "카테고리 선택"
+    override val businessHours: String = "영업 시간"
+    override val address: String = "주소"
+    override val tel: String = "전화번호"
+    override val url: String = "URL"
+    override val attractionIntroduction: String = "관광지 소개"
+    override val category: String = "카테고리"
+    override val serviceFacilities: String = "서비스 시설"
+    override val clearAll: String = "모두 지우기"
+    override val eventTime: String = "이벤트 시간"
+    override val postedDate: String = "게시 날짜"
+    override val modifiedDate: String = "업데이트 날짜"
+    override val links: String = "링크"
+    override val recommend: String = "추천"
+    override val spring: String = "봄"
+    override val summer: String = "여름"
+    override val autumn: String = "가을"
+    override val winter: String = "겨울"
+    override val emptyContent: String = "데이터 없음"
+}

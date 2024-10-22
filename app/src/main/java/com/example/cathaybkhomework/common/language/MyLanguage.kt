@@ -1,5 +1,14 @@
 package com.example.cathaybkhomework.common.language
 
+import com.example.cathaybkhomework.common.language.multi.English
+import com.example.cathaybkhomework.common.language.multi.Indonesian
+import com.example.cathaybkhomework.common.language.multi.Japanese
+import com.example.cathaybkhomework.common.language.multi.Korean
+import com.example.cathaybkhomework.common.language.multi.SimpleChinese
+import com.example.cathaybkhomework.common.language.multi.Spanish
+import com.example.cathaybkhomework.common.language.multi.Thai
+import com.example.cathaybkhomework.common.language.multi.TraditionalChinese
+import com.example.cathaybkhomework.common.language.multi.Vietnamese
 import com.example.myandroid.common.language.MyModel
 
 enum class MyLanguage(
@@ -23,9 +32,16 @@ enum class MyLanguage(
         operator fun get(key: String) = entries.find { it.key == key }
 
         val strings: MultiLanguage
-            get() = when(current) {
+            get() = when (current) {
                 TW -> TraditionalChinese
-                else -> English
+                CN -> SimpleChinese
+                EN -> English
+                JP -> Japanese
+                KO -> Korean
+                ES -> Spanish
+                ID -> Indonesian
+                TH -> Thai
+                VI -> Vietnamese
             }
 
     }

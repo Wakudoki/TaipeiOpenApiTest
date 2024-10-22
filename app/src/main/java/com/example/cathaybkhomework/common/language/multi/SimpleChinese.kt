@@ -1,0 +1,36 @@
+package com.example.cathaybkhomework.common.language.multi
+
+import com.example.cathaybkhomework.common.language.MultiLanguage
+
+object SimpleChinese : MultiLanguage {
+    override val latestNews: String = "最新消息"
+    override val showMore: String = "显示更多"
+    override val home: String = "首页"
+    override val attraction: String = "游憩景点"
+    override val activityEvent: String = "活动展演"
+    override val EventCalendar: String = "活动年历"
+    override val tours: String = "主题旅游"
+    override val viewDetail: String = "查看详情"
+    override val noImage: String = "无图片显示"
+    override val all: String = "全部"
+    override val selectLanguage: String = "选择语言"
+    override val selectCategories: String = "选择类型"
+    override val businessHours: String = "营业时间"
+    override val address: String = "地址"
+    override val tel: String = "联系电话"
+    override val url: String = "网址"
+    override val attractionIntroduction: String = "景点介绍"
+    override val category: String = "类型"
+    override val serviceFacilities: String = "服务设施"
+    override val clearAll: String = "清除全部"
+    override val eventTime: String = "活动时间"
+    override val postedDate: String = "发布日期"
+    override val modifiedDate: String = "更新日期"
+    override val links: String = "相关链接"
+    override val recommend: String = "推荐"
+    override val spring: String = "春"
+    override val summer: String = "夏"
+    override val autumn: String = "秋"
+    override val winter: String = "冬"
+    override val emptyContent: String = "没有资料"
+}

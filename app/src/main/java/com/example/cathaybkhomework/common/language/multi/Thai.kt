@@ -1,0 +1,36 @@
+package com.example.cathaybkhomework.common.language.multi
+
+import com.example.cathaybkhomework.common.language.MultiLanguage
+
+object Thai : MultiLanguage {
+    override val latestNews: String = "ข่าวล่าสุด"
+    override val showMore: String = "แสดงเพิ่มเติม"
+    override val home: String = "หน้าแรก"
+    override val attraction: String = "สถานที่ท่องเที่ยว"
+    override val activityEvent: String = "กิจกรรม"
+    override val EventCalendar: String = "ปฏิทินกิจกรรม"
+    override val tours: String = "แผนการเดินทางตามธีม"
+    override val viewDetail: String = "ดูรายละเอียด"
+    override val noImage: String = "ไม่มีภาพ"
+    override val all: String = "ทั้งหมด"
+    override val selectLanguage: String = "เลือกภาษา"
+    override val selectCategories: String = "เลือกประเภท"
+    override val businessHours: String = "ชั่วโมงทำการ"
+    override val address: String = "ที่อยู่"
+    override val tel: String = "โทรศัพท์"
+    override val url: String = "URL"
+    override val attractionIntroduction: String = "แนะนำสถานที่ท่องเที่ยว"
+    override val category: String = "ประเภท"
+    override val serviceFacilities: String = "สิ่งอำนวยความสะดวก"
+    override val clearAll: String = "ล้างทั้งหมด"
+    override val eventTime: String = "เวลาเหตุการณ์"
+    override val postedDate: String = "วันที่โพสต์"
+    override val modifiedDate: String = "วันที่ปรับปรุง"
+    override val links: String = "ลิงก์"
+    override val recommend: String = "แนะนำ"
+    override val spring: String = "ฤดูใบไม้ผลิ"
+    override val summer: String = "ฤดูร้อน"
+    override val autumn: String = "ฤดูใบไม้ร่วง"
+    override val winter: String = "ฤดูหนาว"
+    override val emptyContent: String = "ไม่มีข้อมูล"
+}

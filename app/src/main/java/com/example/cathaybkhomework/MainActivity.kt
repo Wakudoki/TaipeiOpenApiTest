@@ -78,7 +78,7 @@ import com.example.cathaybkhomework.page.activity.list.ActivityEventFragment
 import com.example.cathaybkhomework.page.attraction.list.AttractionFragment
 import com.example.cathaybkhomework.page.calendar.EventCalendarFragment
 import com.example.cathaybkhomework.page.home.HomeFragment
-import com.example.cathaybkhomework.page.tours.ToursFragment
+import com.example.cathaybkhomework.page.tours.list.ToursFragment
 import com.example.cathaybkhomework.ui.theme.ThemeMode
 import com.example.myandroid.common.language.MyModel
 import com.example.myandroid.extension.clickableNoRipple
@@ -136,6 +136,9 @@ class MainActivity : FragmentActivity() {
             when (navController.currentDestination?.route) {
                 MyScreens.Home.name -> MyLanguage.strings.home
                 MyScreens.Attraction.name -> MyLanguage.strings.attraction
+                MyScreens.ActivityEvent.name -> MyLanguage.strings.activityEvent
+                MyScreens.EventCalendar.name -> MyLanguage.strings.EventCalendar
+                MyScreens.Tours.name -> MyLanguage.strings.tours
                 else -> MyLanguage.strings.home
             }
         )

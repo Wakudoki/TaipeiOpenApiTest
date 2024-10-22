@@ -31,4 +31,7 @@ interface MultiLanguage {
     val autumn: String
     val winter: String
     val emptyContent: String
+    val attractionCount: String
+    val activityEventCount: String
+    val toursCount: String
 }

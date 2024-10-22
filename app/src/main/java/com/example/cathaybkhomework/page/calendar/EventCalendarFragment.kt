@@ -9,7 +9,7 @@ import androidx.fragment.compose.content
 import com.example.cathaybkhomework.ui.theme.MyTheme
 import org.koin.android.ext.android.inject
 
-class EventCalendarFragment: Fragment() {
+class EventCalendarFragment : Fragment() {
     private val viewModel: EventCalendarViewModel by inject()
     override fun onCreateView(
         inflater: LayoutInflater,

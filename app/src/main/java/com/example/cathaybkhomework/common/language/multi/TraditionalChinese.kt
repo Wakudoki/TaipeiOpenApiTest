@@ -33,4 +33,7 @@ object TraditionalChinese : MultiLanguage {
     override val autumn: String = "秋"
     override val winter: String = "冬"
     override val emptyContent: String = "沒有資料"
+    override val attractionCount: String = "共有 %d 處景點"
+    override val activityEventCount: String = "共有 %d 筆活動"
+    override val toursCount: String = "共有 %d 則遊程"
 }

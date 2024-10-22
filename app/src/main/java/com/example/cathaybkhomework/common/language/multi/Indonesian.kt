@@ -33,4 +33,7 @@ object Indonesian : MultiLanguage {
     override val autumn: String = "Musim Gugur"
     override val winter: String = "Musim Dingin"
     override val emptyContent: String = "Tidak Ada Data"
+    override val attractionCount: String = "Total %d daya tarik"
+    override val activityEventCount: String = "Total %d acara"
+    override val toursCount: String = "Total %d rencana perjalanan"
 }

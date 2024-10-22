@@ -33,4 +33,7 @@ object English : MultiLanguage {
     override val autumn: String = "Autumn"
     override val winter: String = "Winter"
     override val emptyContent: String = "No Data"
+    override val attractionCount: String = "%d Attractions"
+    override val activityEventCount: String = "%d Events"
+    override val toursCount: String = "%d Itineraries"
 }

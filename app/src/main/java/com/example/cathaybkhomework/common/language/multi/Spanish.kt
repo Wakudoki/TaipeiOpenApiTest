@@ -33,4 +33,7 @@ object Spanish : MultiLanguage {
     override val autumn: String = "Otoño"
     override val winter: String = "Invierno"
     override val emptyContent: String = "Sin datos"
+    override val attractionCount: String = "Un total de %d atracciones"
+    override val activityEventCount: String = "Un total de %d eventos"
+    override val toursCount: String = "Un total de %d itinerarios"
 }

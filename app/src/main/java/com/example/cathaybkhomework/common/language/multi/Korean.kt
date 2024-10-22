@@ -33,4 +33,7 @@ object Korean : MultiLanguage {
     override val autumn: String = "가을"
     override val winter: String = "겨울"
     override val emptyContent: String = "데이터 없음"
+    override val attractionCount: String = "총 %d 개의 관광지"
+    override val activityEventCount: String = "총 %d 건의 이벤트"
+    override val toursCount: String = "총 %d 개의 여행 일정"
 }

@@ -6,7 +6,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class ThemeModeRepository {
-    private val _themeMode: MutableStateFlow<ThemeMode> = MutableStateFlow(ThemeMode[MyModel.languageKey] ?: ThemeMode.SYSTEM)
+    private val _themeMode: MutableStateFlow<ThemeMode> =
+        MutableStateFlow(ThemeMode[MyModel.languageKey] ?: ThemeMode.SYSTEM)
     val themeMode = _themeMode.asStateFlow()
 
     fun setThemeMode(themeMode: ThemeMode) {

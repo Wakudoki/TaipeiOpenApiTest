@@ -86,6 +86,23 @@ fun ActivityEventScreen(
         Column(
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                activityEventData.value?.let {
+                    Text(
+                        text = MyLanguage.strings.activityEventCount.format(it.total),
+                        style = TextStyle(
+                            fontSize = 12.sp,
+                            color = LocalColorTextTitle
+                        ),
+                    )
+                }
+            }
+
             if (isLoading.value) {
                 LoadingGradient(
                     count = 10,
@@ -148,9 +165,9 @@ fun ActivityEventCard(
             Text(
                 text = activityEvent.title,
                 style = TextStyle(
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    color = LocalColorTextTitle
                 ),
-                color = LocalColorTextTitle
             )
 
             Spacer(modifier = Modifier.weight(1f))
@@ -178,8 +195,8 @@ fun ActivityEventCard(
                     text = MyLanguage.strings.viewDetail,
                     style = TextStyle(
                         fontSize = 12.sp,
+                        color = LocalColorBluePrimary
                     ),
-                    color = LocalColorBluePrimary
                 )
 
                 Icon(

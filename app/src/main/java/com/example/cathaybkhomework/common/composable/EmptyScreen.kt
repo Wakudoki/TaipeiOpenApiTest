@@ -22,7 +22,9 @@ fun EmptyScreen(
     sizeInDp: DpSize = DpSize.Zero
 ) {
     Box(
-        modifier = Modifier.fillMaxSize().padding(top = sizeInDp.height/3)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = sizeInDp.height / 3)
     ) {
         Column(
             modifier = Modifier.align(Alignment.Center),

@@ -33,4 +33,7 @@ object Thai : MultiLanguage {
     override val autumn: String = "ฤดูใบไม้ร่วง"
     override val winter: String = "ฤดูหนาว"
     override val emptyContent: String = "ไม่มีข้อมูล"
+    override val attractionCount: String = "มีสถานที่ท่องเที่ยวทั้งหมด %d แห่ง"
+    override val activityEventCount: String = "มีกิจกรรมทั้งหมด %d รายการ"
+    override val toursCount: String = "มีกำหนดการเดินทางทั้งหมด %d รายการ"
 }

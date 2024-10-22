@@ -33,4 +33,7 @@ object SimpleChinese : MultiLanguage {
     override val autumn: String = "秋"
     override val winter: String = "冬"
     override val emptyContent: String = "没有资料"
+    override val attractionCount: String = "共有 %d 处景点"
+    override val activityEventCount: String = "共有 %d 笔活动"
+    override val toursCount: String = "共有 %d 则游程"
 }

@@ -13,7 +13,7 @@ object NetworkModule {
     val modules = module {
         single { provideHttpClient() }
         single { provideConverterFactory() }
-        single { provideRetrofit(get(),get()) }
+        single { provideRetrofit(get(), get()) }
         single { provideService(get()) }
     }
 
@@ -49,5 +49,6 @@ object NetworkModule {
             .build()
     }
 
-    private fun provideService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+    private fun provideService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
 }

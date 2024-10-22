@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -62,7 +61,7 @@ import com.example.cathaybkhomework.page.attraction.detail.AttractionDetailActiv
 import com.example.cathaybkhomework.page.home.AttractionCard
 import com.example.myandroid.extension.clickableNoRipple
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AttractionScreen(
     viewModel: AttractionViewModel
@@ -115,8 +114,19 @@ fun AttractionScreen(
                         menuState = true
                     },
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.End
             ) {
+                attractionsData.value?.let {
+                    Text(
+                        text = MyLanguage.strings.attractionCount.format(it.total),
+                        style = TextStyle(
+                            fontSize = 12.sp,
+                            color = LocalColorTextTitle
+                        ),
+                    )
+                }
+
+                Spacer(modifier = Modifier.weight(1f))
+
                 Icon(
                     modifier = Modifier.size(28.dp),
                     painter = painterResource(R.drawable.ic_filter),

@@ -84,6 +84,23 @@ fun ToursScreen(
         Column(
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                toursData.value?.let {
+                    Text(
+                        text = MyLanguage.strings.toursCount.format(it.total),
+                        style = TextStyle(
+                            fontSize = 12.sp,
+                            color = LocalColorTextTitle
+                        ),
+                    )
+                }
+            }
+
             if (isLoading.value) {
                 LoadingGradient(
                     count = 10,

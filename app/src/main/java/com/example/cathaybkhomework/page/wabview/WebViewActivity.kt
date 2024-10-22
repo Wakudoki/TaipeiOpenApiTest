@@ -37,7 +37,7 @@ import com.example.cathaybkhomework.ui.theme.ThemeMode
 import com.example.myandroid.common.language.MyModel
 
 
-class WebViewActivity: ComponentActivity() {
+class WebViewActivity : ComponentActivity() {
 
     companion object {
         fun newIntent(
@@ -69,7 +69,7 @@ class WebViewActivity: ComponentActivity() {
                 LocalThemeModeOf provides ThemeMode[MyModel.themeMode],
                 LocalLanguageOf provides MyLanguage[MyModel.languageKey]
             ) {
-                Scaffold (
+                Scaffold(
                     topBar = {
                         TopAppBar(
                             navigationIcon = {

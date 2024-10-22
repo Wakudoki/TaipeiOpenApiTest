@@ -33,4 +33,7 @@ object Vietnamese : MultiLanguage {
     override val autumn: String = "Mùa thu"
     override val winter: String = "Mùa đông"
     override val emptyContent: String = "Không có dữ liệu"
+    override val attractionCount: String = "Có tổng cộng %d điểm tham quan"
+    override val activityEventCount: String = "Có tổng cộng %d sự kiện"
+    override val toursCount: String = "Có tổng cộng %d lịch trình"
 }

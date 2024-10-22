@@ -9,7 +9,7 @@ import androidx.fragment.compose.content
 import com.example.cathaybkhomework.ui.theme.MyTheme
 import org.koin.android.ext.android.inject
 
-class ActivityEventFragment: Fragment() {
+class ActivityEventFragment : Fragment() {
     private val viewModel: ActivityEventViewModel by inject()
     override fun onCreateView(
         inflater: LayoutInflater,

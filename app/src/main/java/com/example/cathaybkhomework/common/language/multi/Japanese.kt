@@ -33,4 +33,7 @@ object Japanese : MultiLanguage {
     override val autumn: String = "秋"
     override val winter: String = "冬"
     override val emptyContent: String = "データなし"
+    override val attractionCount: String = "全 %d 箇所の観光地"
+    override val activityEventCount: String = "全 %d 件のイベント"
+    override val toursCount: String = "全 %d 件の旅行プラン"
 }

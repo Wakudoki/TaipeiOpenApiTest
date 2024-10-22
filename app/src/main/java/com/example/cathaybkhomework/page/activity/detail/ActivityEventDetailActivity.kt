@@ -5,8 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -21,8 +24,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.toArgb
 import com.example.cathaybkhomework.common.composable.LocalColorBackgroundOriginal
+import com.example.cathaybkhomework.common.composable.LocalColorIconNormal
 import com.example.cathaybkhomework.common.composable.LocalColorTextTitle
+import com.example.cathaybkhomework.common.composable.LocalIsDarkTheme
 import com.example.cathaybkhomework.common.composable.LocalLanguageOf
 import com.example.cathaybkhomework.common.composable.LocalThemeModeOf
 import com.example.cathaybkhomework.common.language.MyLanguage
@@ -59,6 +65,18 @@ class ActivityEventDetailActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            //判斷是否為暗黑模式，並修改status&navigationBar的顏色
+            val isDarkMode = LocalIsDarkTheme
+            val systemBarStyle = if (isDarkMode) {
+                SystemBarStyle.dark(LocalColorBackgroundOriginal.toArgb())
+            } else {
+                SystemBarStyle.light(LocalColorBackgroundOriginal.toArgb(), LocalColorBackgroundOriginal.toArgb())
+            }
+            enableEdgeToEdge(
+                statusBarStyle = systemBarStyle,
+                navigationBarStyle = systemBarStyle
+            )
+
             CompositionLocalProvider(
                 LocalThemeModeOf provides ThemeMode[MyModel.themeMode],
                 LocalLanguageOf provides MyLanguage[MyModel.languageKey]
@@ -74,7 +92,8 @@ class ActivityEventDetailActivity : ComponentActivity() {
                                 ) {
                                     Icon(
                                         imageVector = Icons.Default.ArrowBack,
-                                        contentDescription = "Back"
+                                        contentDescription = "Back",
+                                        tint = LocalColorIconNormal
                                     )
                                 }
                             },
@@ -90,6 +109,7 @@ class ActivityEventDetailActivity : ComponentActivity() {
                 ) { paddingValue ->
                     ActivityEventDetailScreen(
                         modifier = Modifier
+                            .fillMaxSize()
                             .background(LocalColorBackgroundOriginal)
                             .verticalScroll(rememberScrollState())
                             .padding(paddingValue),

@@ -201,7 +201,7 @@ fun HomeScreen(
                                 .fillMaxWidth()
                                 .clickableNoRipple {
                                     attractionsDisplayCount.intValue =
-                                        min(news.size, attractionsDisplayCount.intValue + 3)
+                                        min(attractions.size, attractionsDisplayCount.intValue + 3)
                                 }
                                 .padding(horizontal = 16.dp)
                                 .padding(bottom = 12.dp),
